@@ -1,0 +1,16 @@
+This simple guide will teach you how to make the plugin work:
+
+Open wp-content/themes/[yourtheme]/index.php 
+Find the line where it says: <?php edit_post_link('Edit', '', ' | '); ?>
+	note: for 'default' theme, line no. is:17.
+Before that line, add this: <?php if(function_exists(elertz_this)) { elertz_this(); } ?> 
+
+Open wp-content/themes/[yourtheme]/index.php 
+Find the line where it says: <?php } edit_post_link('Edit this entry.','',''); ?>
+	note: for 'default' theme, line no. is:47.
+After that line, add this: <?php if(function_exists(elertz_this)) { elertz_this(); } ?> 
+
+Open wp-comments-post.php
+Find the line where it says: $location = ( empty($_POST['redirect_to']) ? get_permalink($comment_post_ID) : $_POST['redirect_to'] ) . '#comment-' . $comment_id;
+	note: usualy line no. between 71 - 73.
+Before that line, add this: if ( function_exists('elertz_this') ){ elertz_this(true); }
